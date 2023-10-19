@@ -1,2 +1,2 @@
-!function(){"use strict";var e;e=class{constructor(e){this.ele=e,this.ele.innerHTML="<h1> It's Alive! </h1>";let t=this.handleClick.bind(this);this.ele.addEventListener("click",t)}handleClick(){this.ele.children[0].innerText="Ouch"}},document.addEventListener("DOMContentLoaded",(()=>{console.log("hello from index.js");let t=document.querySelector("#main");new e(t)}))}();
+!function(){"use strict";!function(){document.getElementById("game-canvas").getContext("2d");const e=new e;document.addEventListener("DOMContentLoaded",(()=>{console.log("hello from index.js")}))}()}();
 //# sourceMappingURL=main.js.map
