@@ -1,5 +1,0 @@
-class MovingObject {
-    constructor(hash) {
-        
-    }
-}
