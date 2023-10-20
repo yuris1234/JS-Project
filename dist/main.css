@@ -54,3 +54,8 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+canvas {
+  border: solid 2px;
+  border-color: red;
+}
