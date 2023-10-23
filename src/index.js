@@ -8,7 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const ctx = canvas.getContext('2d');
     canvas.width = (window.innerWidth);
     canvas.height = (window.innerHeight);
+    let audioCtx = '';
+    document.addEventListener("click", () => {
+        audioCtx = new AudioContext();
+        let game = new Game(canvas, ctx, audioCtx);
+        game.run();
+    })
 
-    let game = new Game(canvas, ctx);
-    game.run();
+    // let game = new Game(canvas, ctx, audioCtx);
+    // game.run();
 })
