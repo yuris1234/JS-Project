@@ -1,4 +1,4 @@
-import noteFreq from "./noteTable";
+// import noteFreq from "./noteTable";
 
 class Note {
     constructor(canvas, ctx, audioCtx) {
@@ -64,8 +64,8 @@ class Note {
         img.src = "src/scripts/music_note.png";
         img.onload = () => {
             this.ctx.fillStyle = 'red';
-            this.ctx.font = "30px serif";
-            this.ctx.drawImage(img, this.pos.x, this.pos.y, 100, 100);
+            this.ctx.font = "20px serif";
+            this.ctx.drawImage(img, this.pos.x, this.pos.y, 50, 50);
             this.ctx.fillText(this.alpha,this.pos.x + 50, this.pos.y+10, 100);
         };
     }

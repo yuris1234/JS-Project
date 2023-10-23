@@ -28,7 +28,7 @@ class Bucket {
         let img = new Image();
         img.src = "src/scripts/half-sphere.png";
         img.onload = () => {
-            this.ctx.fillStyle = 'white';
+            this.ctx.fillStyle = 'beige';
             this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
             this.ctx.drawImage(img, this.pos, this.canvasHeight-100, 100, 100);
         }

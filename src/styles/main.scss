@@ -1,13 +1,10 @@
-// body {
-//     display: flex;
-//     flex-direction: row;
-// }
-
-// #game-canvas {
-
-// }
+body {
+    display: flex;
+    flex-direction: row;
+}
 
 canvas {
     border: solid 2px;
     border-color: red;
+    background-color: beige;
 }
