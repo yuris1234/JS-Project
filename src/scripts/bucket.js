@@ -27,21 +27,18 @@ class Bucket {
     draw() {
         let img = new Image();
         img.src = "src/scripts/half-sphere.png";
-        // this.img.onload = this.loading_complete.bind(this);
-        // debugger
         img.onload = () => {
-            // debugger
             this.ctx.fillStyle = 'white';
             this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
-            this.ctx.drawImage(img, this.pos, 0,this.canvasHeight-100, 100, 100);
+            this.ctx.drawImage(img, this.pos, this.canvasHeight-100, 100, 100);
         }
     }
 
     update() {
         this.draw();
         this.velocity = 0;
-        if (this.keys.right.pressed) this.velocity = 3;
-        else if (this.keys.left.pressed) this.velocity = -3;
+        if (this.keys.right.pressed && this.pos <= this.canvasWidth-100) this.velocity = 3;
+        else if (this.keys.left.pressed && this.pos >= 0) this.velocity = -3;
         this.pos += this.velocity;
     }
 
