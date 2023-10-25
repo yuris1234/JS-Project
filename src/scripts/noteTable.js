@@ -13,4 +13,6 @@ noteFreq[0]['A'] = 440.0;
 noteFreq[0]['B'] = 493.9;
 noteFreq[1]['C'] = 523.3;
 
+
+
 export default noteFreq;

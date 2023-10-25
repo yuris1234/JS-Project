@@ -5,7 +5,7 @@ class Note {
 
         this.velocity = this.getRandomArbitrary(1, 3);
         this.pos = {
-            x: this.getRandomArbitrary(100, canvas.width),
+            x: this.getRandomArbitrary(10, canvas.width-10),
             y: 0
         };
         this.audioCtx = audioCtx
@@ -24,25 +24,25 @@ class Note {
         sound.crossOrigin = "anonymous";
         switch (this.alpha) {
             case "A": 
-                sound.src = "src/scripts/a.mp3";
+                sound.src = "src/media/a.mp3";
                 break;
             case "B":
-                sound.src = "src/scripts/b.mp3";
+                sound.src = "src/media/b.mp3";
                 break;
             case "C":
-                sound.src = "src/scripts/c.mp3";
+                sound.src = "src/media/c.mp3";
                 break;
             case "D":
-                sound.src = "src/scripts/d.mp3";
+                sound.src = "src/media/d.mp3";
                 break;
             case "E":
-                sound.src = "src/scripts/e.mp3";
+                sound.src = "src/media/e.mp3";
                 break;
             case "F":
-                sound.src = "src/scripts/f.mp3";
+                sound.src = "src/media/f.mp3";
                 break;
             case "G":
-                sound.src = "src/scripts/g.mp3";
+                sound.src = "src/media/g.mp3";
                 break;
         }
         const source = this.audioCtx.createMediaElementSource(sound);
@@ -61,17 +61,17 @@ class Note {
         //         this.ctx.fillText(this.alpha,this.pos.x + 50, this.pos.y+10, 100);
         //     }
         // } else {
-        img.src = "src/scripts/music_note.png";
+        img.src = "src/media/music_note.png";
         img.onload = () => {
             this.ctx.fillStyle = 'red';
             this.ctx.font = "20px serif";
             this.ctx.drawImage(img, this.pos.x, this.pos.y, 50, 50);
-            this.ctx.fillText(this.alpha,this.pos.x + 50, this.pos.y+10, 100);
+            this.ctx.fillText(this.alpha,this.pos.x+20, this.pos.y);
         };
     }
 
     update() {
-        if (this.pos.y >= this.canvas.height- 100 || this.collision) {
+        if (this.pos.y >= this.canvas.height-50 || this.collision) {
             this.appear = false;
         } else {
             this.draw();
@@ -114,9 +114,9 @@ class Note {
 
     checkCollision(bucket) {
         if (
-            this.pos.x <= bucket.pos + 50 &&
-            this.pos.y >= this.canvas.height - 100 &&
-            this.pos.x >= bucket.pos - 50
+            this.pos.x <= bucket.pos + 37.5 &&
+            this.pos.y >= this.canvas.height - 75 &&
+            this.pos.x >= bucket.pos - 37.5
         ) {
             this.collision = true;
             this.appear = false;

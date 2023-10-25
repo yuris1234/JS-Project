@@ -26,11 +26,11 @@ class Bucket {
 
     draw() {
         let img = new Image();
-        img.src = "src/scripts/half-sphere.png";
+        img.src = "src/media/book.png";
         img.onload = () => {
             this.ctx.fillStyle = 'beige';
             this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
-            this.ctx.drawImage(img, this.pos, this.canvasHeight-100, 100, 100);
+            this.ctx.drawImage(img, this.pos, this.canvasHeight-75, 75, 75);
         }
     }
 
