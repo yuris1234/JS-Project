@@ -1,20 +1,36 @@
-// import Example from "./scripts/example";
-import Bucket from "./scripts/bucket.js";
 import Game from "./scripts/game.js";
-// const audioContext = new audioContext();
 
 document.addEventListener("DOMContentLoaded", () => {
-    const canvas = document.getElementById('game-canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = (window.innerWidth);
-    canvas.height = (window.innerHeight);
-    let audioCtx = '';
-    document.addEventListener("click", () => {
-        audioCtx = new AudioContext();
-        let game = new Game(canvas, ctx, audioCtx);
+    const gameCanvas = document.getElementById('game-canvas');
+    const gameCtx = gameCanvas.getContext('2d');
+    gameCanvas.width = (window.innerWidth - window.innerWidth/2.5);
+    gameCanvas.height = (window.innerHeight - window.innerHeight/4);
+
+    const sequenceCanvas = document.getElementById('sequence-canvas');
+    const sequenceCtx = sequenceCanvas.getContext('2d');
+    sequenceCanvas.width = (window.innerWidth/2 - 100);
+    sequenceCanvas.height = (window.innerHeight/12);
+
+    gameCanvas.addEventListener("click", () => {
+        let audioCtx = new AudioContext();
+        let game = new Game(gameCanvas, gameCtx, audioCtx, sequenceCanvas, sequenceCtx);
         game.run();
     })
 
-    // let game = new Game(canvas, ctx, audioCtx);
-    // game.run();
+    let volumeSlider = document.querySelector("input[name='volume']");
+    let previousVolume = volumeSlider.value;
+    let muteButton = document.querySelector(".mute");
+    let unmuteButton = document.querySelector(".unmute");
+    muteButton.addEventListener("click", (e) => {
+        muteButton.className = "mute hidden";
+        unmuteButton.className = "unmute";
+        volumeSlider.value = 0; 
+
+    })
+    unmuteButton.addEventListener("click", (e) => {
+        unmuteButton.className = "unmute hidden";
+        muteButton.className = "mute";
+        volumeSlider.value = previousVolume;
+    })
+
 })
