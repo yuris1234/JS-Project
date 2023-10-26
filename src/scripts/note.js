@@ -1,5 +1,3 @@
-// import noteFreq from "./noteTable";
-
 class Note {
     constructor(canvas, ctx, audioCtx) {
 
@@ -13,10 +11,24 @@ class Note {
         this.canvas = canvas;
         this.appear = true;
         this.collision = false;
-        this.beat = this.getRandomInt(1, 5)
         this.alpha = this.getRandomAlpha();
+        this.createGain();
         this.sound = this.createAudio();
-        // this.freq = noteFreq[this.getRandomInt(0,1)][this.alpha];
+    }
+
+    createGain() {
+        const volumeSlider = document.querySelector("input[name='volume']");
+        this.gainNode = this.audioCtx.createGain();
+        this.gainNode.connect(this.audioCtx.destination);
+        this.gainNode.gain.value = volumeSlider.value;
+        volumeSlider.addEventListener("change", (e) => {
+            this.gainNode.gain.value = volumeSlider.value;
+        }, false);
+    }
+
+    updateGain() {
+        const volumeSlider = document.querySelector("input[name='volume']");
+        this.gainNode.gain.value = volumeSlider.value;
     }
 
     createAudio() {
@@ -45,22 +57,14 @@ class Note {
                 sound.src = "src/media/g.mp3";
                 break;
         }
+        // sound.connect()
         const source = this.audioCtx.createMediaElementSource(sound);
-        source.connect(this.audioCtx.destination);
+        source.connect(this.gainNode);
         return sound;
     }
 
     draw() {
         let img = new Image();
-        // if (this.beat === 2) {
-        //     img.src = "src/scripts/half_note.png";
-        //     img.onload = () => {
-        //         this.ctx.fillStyle = 'red';
-        //         this.ctx.font = "30px serif";
-        //         this.ctx.drawImage(img, this.pos.x, this.pos.y, 50, 50);
-        //         this.ctx.fillText(this.alpha,this.pos.x + 50, this.pos.y+10, 100);
-        //     }
-        // } else {
         img.src = "src/media/music_note.png";
         img.onload = () => {
             this.ctx.fillStyle = 'red';
@@ -96,20 +100,8 @@ class Note {
     }
 
     playTone() {
-        // debugger
-        // const osc = this.audioCtx.createOscillator();
-        // osc.type = "triangle";
-        // osc.frequency.value = this.freq;
-        // // (this.freq, this.audioCtx.currentTime)
-        // osc.connect(this.audioCtx.destination)
-        this.sound.play();
-        // osc.start();
-        // if (this.beat === 2) {
-        //     osc.stop(this.audioCtx.currentTime + 0.50);
-        // } else {
-        //     osc.stop(this.audioCtx.currentTime + 0.25);
-        // }
-        // osc.stop(this.audioCtx.currentTime + 0.25);
+        this.updateGain();
+        this.sound.play();  
     }
 
     checkCollision(bucket) {
