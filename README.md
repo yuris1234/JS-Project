@@ -1,4 +1,4 @@
-# Final Proposal - Interactive Musical Buckets
+# Interactive Music Maker
 
 ## Background
 My project, which I will call "Musical Buckets" for now, is a fun interactive game-like demo where the user will collect musical notes falling from the sky. The user will have control over a "bucket" of some sorts at the bottom of the screen, which they can move around to catch these notes. As they amass notes, they will show up at the bottom of the screen in sequence until they reach the limit. As they collect, they are encouraged to match a sequence of notes at the bottom, which will be random children's melodies such as Mary Had a Little Lamb, or Twinkle Twinkle.
@@ -18,7 +18,7 @@ Additionally, the project will include:
 
 ## Wireframes
 
-![plot](./wireframes.png)
+![plot](src/media/wireframes.png)
 - Controls include how to move buckets, start, stop, and restart buttons
 - Toggles for volume and different demo types are on the right
 - The little mascot guy on the left will not be interacted with
