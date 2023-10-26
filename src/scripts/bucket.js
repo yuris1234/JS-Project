@@ -28,8 +28,8 @@ class Bucket {
         let img = new Image();
         img.src = "src/media/book.png";
         img.onload = () => {
-            this.ctx.fillStyle = 'beige';
-            this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
+            // this.ctx.fillStyle = 'lightcyan';
+            this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
             this.ctx.drawImage(img, this.pos, this.canvasHeight-75, 75, 75);
         }
     }

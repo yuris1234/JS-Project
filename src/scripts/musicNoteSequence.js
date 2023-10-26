@@ -3,7 +3,7 @@ class musicNoteSequence {
         this.canvas = sequenceCanvas;
         this.ctx = sequenceCtx;
         this.sequence = [];
-        this.pos = 25;
+        this.pos = 50;
     }
 
     // addNote(note) {
@@ -17,8 +17,8 @@ class musicNoteSequence {
             this.sequence.forEach((note) => {
                 this.ctx.fillStyle = "black";
                 this.ctx.font = "20px serif";
-                this.ctx.drawImage(img, this.pos, 50, 50, 50);
-                this.ctx.fillText(note.alpha, this.pos+10, 60);
+                this.ctx.drawImage(img, this.pos, 10, 50, 50);
+                this.ctx.fillText(note.alpha, this.pos+10, 20);
                 this.pos += 50;
             })
         }
@@ -26,7 +26,7 @@ class musicNoteSequence {
 
     update(note) {
         this.sequence.push(note);
-        this.pos = 25;
+        this.pos = 50;
         this.draw();
     }
 }

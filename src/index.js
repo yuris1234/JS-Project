@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sequenceCanvas = document.getElementById('sequence-canvas');
     const sequenceCtx = sequenceCanvas.getContext('2d');
-    sequenceCanvas.width = (window.innerWidth - window.innerWidth/2);
-    sequenceCanvas.height = (window.innerHeight/5);
+    sequenceCanvas.width = (window.innerWidth/2 - 100);
+    sequenceCanvas.height = (window.innerHeight/12);
 
     gameCanvas.addEventListener("click", () => {
         let audioCtx = new AudioContext();
@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let muteButton = document.querySelector(".mute");
     let unmuteButton = document.querySelector(".unmute");
     muteButton.addEventListener("click", (e) => {
-        // previousVolume = volumeSlider.value;
         muteButton.className = "mute hidden";
         unmuteButton.className = "unmute";
         volumeSlider.value = 0; 

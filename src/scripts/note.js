@@ -1,6 +1,5 @@
 class Note {
     constructor(canvas, ctx, audioCtx) {
-
         this.velocity = this.getRandomArbitrary(1, 3);
         this.pos = {
             x: this.getRandomArbitrary(10, canvas.width-10),
@@ -67,7 +66,7 @@ class Note {
         let img = new Image();
         img.src = "src/media/music_note.png";
         img.onload = () => {
-            this.ctx.fillStyle = 'red';
+            this.ctx.fillStyle = 'black';
             this.ctx.font = "20px serif";
             this.ctx.drawImage(img, this.pos.x, this.pos.y, 50, 50);
             this.ctx.fillText(this.alpha,this.pos.x+20, this.pos.y);

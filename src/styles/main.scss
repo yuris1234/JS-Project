@@ -3,24 +3,36 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // font-family: 'Courier New', monospace;
+    font-family: 'Copperplate', fantasy;
+    background-color: lightcyan;
 }
 
-canvas {
+#game-canvas {
+    background-color: lightcyan;
+}
+
+#sequence-canvas {
     border: solid 2px;
-    // border-color: red;
-    background-color: beige;
+    border-radius: 30px;
+    background-color: white;
+    border-width: 5px;
 }
 
 h1 {
-    font-size: 30px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    font-size: 70px;
+    font-weight: 700;
+    background-image: linear-gradient(to bottom left, #FCB0B3, #445E93);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+h3 {
+    font-size: 20px;
+
 }
 
 .music-note-sequence {
-    // margin-top: 30px;
-    // margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,22 +41,38 @@ h1 {
 .middle-row {
     display: flex; 
     justify-content: center;
+    align-items: center;
 }
 
 .instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
     left: 2%;
     border: solid black;
-    padding: 10px;
+    border-radius: 25px;
+    border-width: 5px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: lightcyan;
 }
 
 .instructions > ul {
     padding: 1px;
-    margin-top: 10%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .instructions > ul > li {
     padding: 10px;
+    position: center;
+}
+
+.instructions > ul > li > i {
+    margin-right: 15px;
 }
 
 .hidden { 
@@ -53,5 +81,18 @@ h1 {
 
 .settings {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+@keyframes color {
+    0%   { background: #D7FDEC; }
+    20%  { background: #A9FBD7; }
+    40%  { background: #B2E4DB; }
+    60%  { background: #B0C6CE; }
+    80%  { background: #938BA1; }
+    100% {background: lightcyan;}
+  }
+  
+body, #game-canvas, .instructions {
+    animation: color 9s infinite linear;
 }
