@@ -1,8 +1,7 @@
 class Bucket {
-    constructor(width, height, ctx) {
-        this.canvasWidth = width;
-        this.canvasHeight = height;
-        this.pos = this.canvasWidth/2; 
+    constructor(canvas, ctx) {
+        this.canvas = canvas;
+        this.pos = canvas.width/2; 
         this.velocity = 0;
         this.keys = {
             right: {
@@ -13,7 +12,6 @@ class Bucket {
             }
         }
         this.ctx = ctx;
-
         let boundArrowKeyDown = this.handleArrowKeyDown.bind(this);
         let boundArrowKeyUp = this.handleArrowKeyUp.bind(this);
         document.addEventListener("keydown", (e) => {
@@ -28,16 +26,15 @@ class Bucket {
         let img = new Image();
         img.src = "src/media/book.png";
         img.onload = () => {
-            // this.ctx.fillStyle = 'lightcyan';
-            this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-            this.ctx.drawImage(img, this.pos, this.canvasHeight-75, 75, 75);
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.ctx.drawImage(img, this.pos, this.canvas.height-75, 75, 75);
         }
     }
 
     update() {
         this.draw();
         this.velocity = 0;
-        if (this.keys.right.pressed && this.pos <= this.canvasWidth-100) this.velocity = 3;
+        if (this.keys.right.pressed && this.pos <= this.canvas.width-100) this.velocity = 3;
         else if (this.keys.left.pressed && this.pos >= 0) this.velocity = -3;
         this.pos += this.velocity;
     }

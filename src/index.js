@@ -17,6 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
         game.run();
     })
 
+    document.addEventListener("keydown", (e) => {
+        if (e.key === " ") {
+            let audioCtx = new AudioContext();
+            let game = new Game(gameCanvas, gameCtx, audioCtx, sequenceCanvas, sequenceCtx);
+            game.run();
+        }
+    })
+
     let volumeSlider = document.querySelector("input[name='volume']");
     let previousVolume = volumeSlider.value;
     let muteButton = document.querySelector(".mute");

@@ -56,7 +56,6 @@ class Note {
                 sound.src = "src/media/g.mp3";
                 break;
         }
-        // sound.connect()
         const source = this.audioCtx.createMediaElementSource(sound);
         source.connect(this.gainNode);
         return sound;
@@ -74,33 +73,17 @@ class Note {
     }
 
     update() {
-        if (this.pos.y >= this.canvas.height-50 || this.collision) {
-            this.appear = false;
-        } else {
+        this.checkOutOfBounds();
+        if (this.appear) {
             this.draw();
             this.pos.y += this.velocity;
         }
     }
 
-    getRandomArbitrary(min, max) {
-        return Math.random() * (max - min) + min;
-    }
-
-    getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-    }
-
-    getRandomAlpha() {
-        let alpha = ['A','B','C','D','E','F','G'];
-        let num = this.getRandomInt(0,7);
-        return alpha[num];
-    }
-
-    playTone() {
-        this.updateGain();
-        this.sound.play();  
+    checkOutOfBounds() { 
+        if (this.pos.y >= this.canvas.height-50) {
+            this.appear = false;
+        }
     }
 
     checkCollision(bucket) {
@@ -113,6 +96,27 @@ class Note {
             this.appear = false;
         }
         return this.collision;
+    }
+
+    playTone() {
+        this.updateGain();
+        this.sound.play();  
+    }
+
+    getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    getRandomAlpha() {
+        let alpha = ['A','B','C','D','E','F','G'];
+        let num = this.getRandomInt(0,7);
+        return alpha[num];
     }
 
 }
